@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', async function () {
-  // Cargar la lista de platos al cargar la página
+ 
   await cargarPlatos();
 
-  // Manejar el formulario para agregar un nuevo plato
+ 
   const addPlatoForm = document.getElementById('addPlatoForm');
   addPlatoForm.addEventListener('submit', agregarPlato);
 
-  // Manejar el formulario para consultar o eliminar un plato por ID
+ 
   const consultPlatoForm = document.getElementById('consultPlatoForm');
   consultPlatoForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Evitar que el formulario se envíe
@@ -23,10 +23,9 @@ async function cargarPlatos() {
     const data = await response.json();
     const platoList = document.getElementById('plato-list');
 
-    // Limpiar la lista existente
+  
     platoList.innerHTML = '';
 
-    // Mostrar cada plato en la lista
     data.data.forEach(plato => {
       const listItem = document.createElement('li');
       listItem.textContent = `ID: ${plato._id}, Nombre: ${plato.nombre}, Calorías: ${plato.calorias}`;
@@ -38,7 +37,7 @@ async function cargarPlatos() {
 }
 
 async function agregarPlato(event) {
-  event.preventDefault(); // Evitar que el formulario se envíe normalmente
+  event.preventDefault(); 
 
   const nombre = document.getElementById('nombre').value;
   const calorias = document.getElementById('calorias').value;
@@ -55,7 +54,7 @@ async function agregarPlato(event) {
     const data = await response.json();
     if (data.state) {
       alert('Plato agregado exitosamente.');
-      await cargarPlatos(); // Recargar la lista de platos después de agregar uno nuevo
+      await cargarPlatos();
     } else {
       alert(`Error al agregar el plato: ${data.error}`);
     }
@@ -92,7 +91,7 @@ async function eliminarPlato() {
     const data = await response.json();
     if (data.state) {
       alert('Plato eliminado exitosamente.');
-      await cargarPlatos(); // Recargar la lista de platos después de eliminar uno
+      await cargarPlatos(); 
     } else {
       alert(`Error al eliminar el plato: ${data.error}`);
     }

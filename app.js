@@ -38,7 +38,7 @@ app.get('/', async (req, res) => {
   }
 });
 
-// Endpoint para recuperar un plato por ObjectId
+
 app.get('/platos/:id', async (req, res) => {
   const { id } = req.params;
   try {
@@ -59,8 +59,7 @@ app.get('/platos/:id', async (req, res) => {
 app.post('/platos', async (req, res) => {
   const nuevoPlato = req.body;
   try {
-    // Lógica para agregar el nuevo plato a la API
-    // ...
+   
 
     res.status(201).json({ state: true, data: nuevoPlato });
   } catch (error) {
@@ -73,9 +72,7 @@ app.post('/platos', async (req, res) => {
 app.delete('/platos/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    // Lógica para eliminar el plato de la API
-    // ...
-
+   
     res.json({ state: true, data: 'Plato eliminado exitosamente' });
   } catch (error) {
     console.error('Error al eliminar el plato:', error);
@@ -86,11 +83,11 @@ app.delete('/platos/:id', async (req, res) => {
 // Socket.io
 io.on('connection', (socket) => {
   console.log('Usuario conectado');
-  // Puedes agregar eventos de socket según tus necesidades
+ 
 });
 
 // Puerto
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
